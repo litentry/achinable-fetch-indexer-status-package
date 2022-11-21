@@ -3,6 +3,7 @@ import Ajv from 'ajv';
 import NodeCache from 'node-cache';
 import statusJsonSchema from './status-json-schema';
 import convertEndpointUrlToBaseUrl from './convert-endpoint-url-to-base-url';
+import { NodeStatus, StatusTypes } from './types';
 
 const ajv = new Ajv();
 const validate = ajv.compile(statusJsonSchema);
@@ -11,13 +12,13 @@ const cache = new NodeCache({ stdTTL: 20, checkperiod: 20 });
 export default async function getIndexerStatus(
   name: string,
   endpointUrl: string
-) {
+): Promise<NodeStatus> {
   try {
     const baseUrl = convertEndpointUrlToBaseUrl(endpointUrl);
     const cachedResponse = cache.get(baseUrl);
 
     if (cachedResponse) {
-      return cachedResponse;
+      return cachedResponse as NodeStatus;
     }
     const response = await axios({
       url: `${baseUrl}/status`,
@@ -32,12 +33,12 @@ export default async function getIndexerStatus(
     }
 
     cache.set(baseUrl, data);
-    return data;
+    return data as NodeStatus;
   } catch (e: any) {
     console.log(JSON.stringify(e, null, 2));
     return {
       name,
-      type: 'indexer',
+      type: StatusTypes.indexer,
       healthy: false,
     };
   }
