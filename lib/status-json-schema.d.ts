@@ -35,6 +35,7 @@ declare const _default: {
             allOf: {
                 $ref: string;
             }[];
+            type: string;
             properties: {
                 healthy: {
                     enum: boolean[];
@@ -45,6 +46,7 @@ declare const _default: {
             allOf: {
                 $ref: string;
             }[];
+            type: string;
             properties: {
                 type: {
                     const: string;
@@ -56,6 +58,7 @@ declare const _default: {
             allOf: {
                 $ref: string;
             }[];
+            type: string;
             properties: {
                 type: {
                     const: string;

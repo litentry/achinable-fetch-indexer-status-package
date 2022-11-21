@@ -37,6 +37,7 @@ export default {
           $ref: '#/definitions/baseStatusNode',
         },
       ],
+      type: 'object',
       properties: {
         healthy: {
           enum: [false],
@@ -49,6 +50,7 @@ export default {
           $ref: '#/definitions/baseStatusNode',
         },
       ],
+      type: 'object',
       properties: {
         type: {
           const: 'chain',
@@ -62,6 +64,7 @@ export default {
           $ref: '#/definitions/baseStatusNode',
         },
       ],
+      type: 'object',
       properties: {
         type: {
           const: 'indexer',
