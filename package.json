@@ -1,5 +1,5 @@
 {
-  "name": "@tdf-labs/fetch-indexer-status-package",
+  "name": "fetch-indexer-status-package",
   "version": "1.0.0",
   "description": "A package for fetching an indexers status",
   "main": "lib/index.js",
